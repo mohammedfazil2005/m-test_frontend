@@ -6,6 +6,8 @@ import { Toaster } from 'react-hot-toast'
 import Home from './components/Home'
 import { AuthContext } from './contexts/ContextAPI'
 import PNF from './components/PNF'
+import FlowChart from './components/FlowEditor'
+import FlowEditor from './components/FlowEditor'
 
 
 
@@ -19,6 +21,7 @@ const App = () => {
    <Routes>
     <Route path='/' element={token?<Home/>:<Login/>} />
     <Route path='/otp' element={<OTP/>}/>
+    <Route path='/flowchart' element={token?<FlowEditor/>:<Login/>}/>
     <Route path='/*' element={<PNF/>}/>
    </Routes>
    </>
