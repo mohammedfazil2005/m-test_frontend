@@ -4,6 +4,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import { io } from 'socket.io-client'
 import baseURL from '../services/baseURL'
 import { data } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement)
@@ -149,6 +150,7 @@ const LineChart = () => {
   return (
     <>
     <div className='container'>
+        
       <div className=" d-flex justify-content-center align-items-center gap-5 box-parent">
         <div  style={{height:"450px",border:'1px solid black',boxShadow:'0px 5px 3px',width:"350px",background:"black",backgroundSize:'cover',borderRadius:'50px'}}>
             <div className='d-flex justify-content-center flex-column align-items-center mt-5 text-white'>

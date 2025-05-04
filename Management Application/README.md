@@ -1,15 +1,15 @@
-# ⚛️ AI-Enhanced Real-Time Dashboard – Frontend (React + Vite)
+#  AI-Enhanced Real-Time Dashboard – Frontend (React + Vite)
 
 This is the **frontend** of the AI-Enhanced MERN Real-Time Dashboard and Flowchart Editor. Built with **React**, **Vite**, and **Bootstrap CSS**, it connects with backend APIs to deliver:
 
-- ✅ OTP-based user authentication  
-- 📈 Real-time sensor data visualization  
-- 🧠 Interactive flowchart editor (via `react-flow`)  
-- 🤖 AI-assisted development
+-  OTP-based user authentication  
+-  Real-time sensor data visualization  
+-  Interactive flowchart editor (via `react-flow`)  
+-  AI-assisted development
 
 ---
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 - 🔹 React + Vite
 - 🔹 Bootstrap CSS
@@ -32,7 +32,6 @@ This is the **frontend** of the AI-Enhanced MERN Real-Time Dashboard and Flowcha
 ### 📊 Real-Time Dashboard
 - Connects to Socket.IO backend
 - Displays live sensor data every 1–2 seconds
-- Supports pause/resume functionality
 
 ### 🧩 Flowchart Editor
 - Drag & drop nodes using `react-flow`
@@ -74,17 +73,17 @@ npm run dev
 
 ---
 
-## 📸 Demo Preview Checklist
+##  Demo Preview Checklist
 
-✅ OTP Signup/Login  
-✅ Real-time dashboard with live sensor data  
-✅ Interactive flowchart with node management  
-✅ UI/UX styled with Bootstrap CSS  
-✅ Toasts for feedback and errors  
+ OTP Signup/Login  
+ Real-time dashboard with live sensor data  
+ Interactive flowchart with node management  
+ UI/UX styled with Bootstrap CSS  
+ Toasts for feedback and errors  
 
 ---
 
-## 🤖 Credits & AI Help
+##  Credits & AI Help
 
 This frontend was built using AI tools to speed up workflow:
 
@@ -94,6 +93,6 @@ This frontend was built using AI tools to speed up workflow:
 
 ---
 
-## 📄 License
+##  License
 
 This project is intended for evaluation and educational purposes only.
