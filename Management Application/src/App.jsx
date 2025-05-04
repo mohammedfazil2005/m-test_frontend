@@ -1,30 +1,43 @@
 import React, { useContext } from 'react'
-import { Route, Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+
+// Component Imports
 import Login from './components/Login'
 import OTP from './components/OTP'
-import { Toaster } from 'react-hot-toast'
 import Home from './components/Home'
-import { AuthContext } from './contexts/ContextAPI'
 import PNF from './components/PNF'
-import FlowChart from './components/FlowEditor'
 import FlowEditor from './components/FlowEditor'
 
+// Context Import
+import { AuthContext } from './contexts/ContextAPI'
 
+// Toast Notifications
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
-  const {token} =useContext(AuthContext)
-
+  // Get token from AuthContext to check authentication status
+  const { token } = useContext(AuthContext)
 
   return (
-   <>
-   <Toaster/>
-   <Routes>
-    <Route path='/' element={token?<Home/>:<Login/>} />
-    <Route path='/otp' element={<OTP/>}/>
-    <Route path='/flowchart' element={token?<FlowEditor/>:<Login/>}/>
-    <Route path='/*' element={<PNF/>}/>
-   </Routes>
-   </>
+    <>
+      {/* Toast notification wrapper */}
+      <Toaster />
+
+      {/* Application Routes */}
+      <Routes>
+        {/* If token exists, show Home, else redirect to Login */}
+        <Route path='/' element={token ? <Home /> : <Login />} />
+
+        {/* OTP route (accessible after registration) */}
+        <Route path='/otp' element={<OTP />} />
+
+        {/* Protected Flowchart route – requires token */}
+        <Route path='/flowchart' element={token ? <FlowEditor /> : <Login />} />
+
+        {/* Page Not Found route for all other paths */}
+        <Route path='/*' element={<PNF />} />
+      </Routes>
+    </>
   )
 }
 
