@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { AuthContext } from '../contexts/ContextAPI';
+import toast from 'react-hot-toast';
 
 
 const Navbar = () => {
@@ -32,6 +33,7 @@ const Navbar = () => {
 
     const onLogout=()=>{
         sessionStorage.clear()
+        toast.success("Logged out")
         setToken("Logout")
     }
 
