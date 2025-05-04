@@ -1,51 +1,52 @@
-import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { onGetProfile } from '../services/allAPI'
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { AuthContext } from '../contexts/ContextAPI';
-import toast from 'react-hot-toast';
-
+import React, { useContext, useEffect } from 'react' // React and hooks
+import { Link } from 'react-router-dom' // Link for navigation
+import { onGetProfile } from '../services/allAPI' // API function to fetch profile data
+import { useState } from 'react'; // useState hook to manage state
+import Button from 'react-bootstrap/Button'; // Button component from React-Bootstrap
+import Modal from 'react-bootstrap/Modal'; // Modal component from React-Bootstrap
+import { AuthContext } from '../contexts/ContextAPI'; // Authentication context for managing user session
+import toast from 'react-hot-toast'; // For displaying toast notifications
 
 const Navbar = () => {
-    const [show, setShow] = useState(false);
-    const {setToken}=useContext(AuthContext)
+    const [show, setShow] = useState(false); // State to control modal visibility
+    const { setToken } = useContext(AuthContext) // Get setToken function from AuthContext
 
-    const [data,setData]=useState({})
+    const [data, setData] = useState({}) // State to store user profile data
 
-    const handleClose = () => setShow(false);
+    // Functions to open and close the modal
+    const handleClose = () => setShow(false); 
     const handleShow = () => setShow(true);
 
-    const onFetchProfile=async()=>{
-        const header={
-            'Authorization':`Bearer ${sessionStorage.getItem('token')}`
+    // Fetch profile data function
+    const onFetchProfile = async () => {
+        const header = {
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Fetch token from sessionStorage
         }
         try {
-            const serverResponce=await onGetProfile(header)
-            if(serverResponce.status==200){
-                setData(serverResponce.data)
+            const serverResponce = await onGetProfile(header) // API call to fetch profile
+            if (serverResponce.status == 200) {
+                setData(serverResponce.data) // Set user data if response is successful
             }
         } catch (error) {
-            console.log(error)
+            console.log(error) // Log any errors
         }
     }
 
-    const onLogout=()=>{
-        sessionStorage.clear()
-        toast.success("Logged out")
-        setToken("Logout")
+    // Logout function
+    const onLogout = () => {
+        sessionStorage.clear() // Clear sessionStorage on logout
+        toast.success("Logged out") // Display success message
+        setToken("Logout") // Update token status in AuthContext
     }
 
-    useEffect(()=>{
-        onFetchProfile()
-    },[])
+    useEffect(() => {
+        onFetchProfile() // Fetch profile data when the component mounts
+    }, []) // Empty dependency array means this runs once when the component mounts
 
-
-
-  return (
-    <div>
-       <nav className="navbar bg-body-tertiary">
+    return (
+        <div>
+            {/* Navbar with branding and buttons */}
+            <nav className="navbar bg-body-tertiary">
                 <div className="container">
                     <Link className="navbar-brand">
                         <img
@@ -56,31 +57,35 @@ const Navbar = () => {
                         />
                     </Link>
                     <div className='d-flex gap-2'>
-                    <button onClick={handleShow} className='btn btn-primary'>Profile</button> 
-                   <Link to={'/flowchart'}><p className='btn btn-primary'>Flow chart</p></Link> 
-                   <button onClick={onLogout} className='btn btn-danger'>Logout</button> 
-                   </div>
-                  
+                        {/* Button to open profile modal */}
+                        <button onClick={handleShow} className='btn btn-primary'>Profile</button>
+                        {/* Link to flowchart page */}
+                        <Link to={'/flowchart'}><p className='btn btn-primary'>Flow chart</p></Link>
+                        {/* Logout button */}
+                        <button onClick={onLogout} className='btn btn-danger'>Logout</button>
+                    </div>
                 </div>
             </nav>
-            <>
+
+            {/* Profile Modal */}
             <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Profile</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-             <p style={{fontWeight:'300',textTransform:'uppercase'}}><i class="fa-solid fa-user me-2"></i>{data?.data?.name}</p>
-          <p style={{fontWeight:'300',textTransform:'uppercase'}}><i class="fa-solid fa-envelope me-2"></i>{data?.data?.email}</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-            </>
-    </div>
-  )
+                <Modal.Header closeButton>
+                    <Modal.Title>Profile</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {/* Display user profile details */}
+                    <p style={{ fontWeight: '300', textTransform: 'uppercase' }}><i class="fa-solid fa-user me-2"></i>{data?.data?.name}</p>
+                    <p style={{ fontWeight: '300', textTransform: 'uppercase' }}><i class="fa-solid fa-envelope me-2"></i>{data?.data?.email}</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    {/* Close button in modal */}
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </div>
+    )
 }
 
 export default Navbar
