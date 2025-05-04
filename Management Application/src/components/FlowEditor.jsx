@@ -76,7 +76,7 @@ function FlowChart() {
   
     const payload = {
       nodes: updatedNodes,
-      edges, // keep existing edges (could add logic to remove edges connected to deleted nodes too)
+      edges, 
     };
   
     const header = {

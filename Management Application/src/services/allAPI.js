@@ -17,3 +17,6 @@ export const onSaveFlow=async(data,header)=>{
 export const onGetFlow=async(header)=>{
     return await commonAPI('get','/flow/load',{},header)
 }
+export const onGetProfile=async(header)=>{
+    return await commonAPI('get','/fetch/profile',{},header)
+}

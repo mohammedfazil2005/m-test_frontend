@@ -178,6 +178,9 @@ const LineChart = () => {
         </div>
       </div>
     </div>
+    <div className='d-flex justify-content-center flex-column align-items-center' style={{marginTop:'60px'}}>
+        <p>Chart showing live updates of Humidity and Temprature</p>
+    </div>
     <div className='w-100 container mt-3' style={{height:'100vh'}}>
       <Line options={Lineoptions} data={Linedata}/>
       

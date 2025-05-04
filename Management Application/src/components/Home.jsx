@@ -11,22 +11,16 @@ import Navbar from './Navbar'
 
 
 const Home = () => {
-   
+
 
     return (
-        <div>
-            <Navbar/>
-            {/* <div className="container">
-                <LineChart/>
-            </div> */}
-          <div>
+        <>
+            <Navbar />
+            <div>
                 {/* <Cards/> */}
-                <LineChart/>
-                </div>
-            
-    
-           
-        </div>
+                <LineChart />
+            </div>
+        </>
     )
 }
 
